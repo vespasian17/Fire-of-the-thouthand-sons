@@ -1,0 +1,4 @@
+repository "The fire of the thouthand sons@vkaesoron@cloud"
+  path "/"
+    br "/main"
+    co "/main"
