@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,27 +6,28 @@ using UnityEngine.Serialization;
 
 public class WallOfBallLogic : MonoBehaviour
 {
-    [SerializeField] private Vector3 direction;
+    [SerializeField] private Vector3 spawnDirection;
     [SerializeField] private Vector3 moveDirection;
-    [SerializeField] private Vector3 spawnPosition;
 
-    private Vector3 SpawnPosition
+    public Vector3 WallOfBallSpawnPoint { get; private set; }
+
+    private void Awake()
     {
-        get => spawnPosition;
-        set => spawnPosition = value;
+        WallOfBallSpawnPoint = GetComponent<Transform>().position;
     }
-    
-    public WallOfBallLogic(Vector3 spawnPosition)
-    {
-        this.spawnPosition = spawnPosition;
-    }
+
     public Vector3 GetSpawnDirectionOfWallBall()
     {
-        return direction;
+        return spawnDirection;
     }
 
     public Transform GetWallTransform()
     {
         return GetComponent<Transform>();
+    }
+
+    public Vector3 GetMoveDirection()
+    {
+        return moveDirection;
     }
 }

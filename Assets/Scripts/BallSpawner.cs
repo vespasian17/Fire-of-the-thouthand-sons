@@ -7,7 +7,6 @@ public class BallSpawner : MonoBehaviour
 {
     private const float ArenaSize = 28.5f;
     private Vector3 _spawnPosition;
-    private GameObject _createdBall;
 
     public void SpawnBallsInARow(GameObject ballPrefab, float spaceBetweenBalls, int numberOfBalls, WallOfBallLogic wall)
     {
@@ -17,11 +16,18 @@ public class BallSpawner : MonoBehaviour
         
         for (int i = 0; i < numberOfBalls; i++)                                                         // Create X balls in a row
         {
-            _createdBall = Instantiate(ballPrefab, _spawnPosition, Quaternion.identity); 
-            var ballConfig = _createdBall.GetComponent<Ball>();                         
+            var createdBall = Instantiate(ballPrefab, wall.transform);
+            createdBall.transform.position = _spawnPosition;
+            var ballConfig = createdBall.GetComponent<Ball>();
+            ballConfig.BallMoveDirection = wall.GetMoveDirection();
             ballConfig.SetBallSize(ballDiameter);                                                       // Set ball size based on ballDiameter
-            _spawnPosition += (ballDiameter + spaceBetweenBalls) * wall.GetSpawnDirectionOfWallBall();       // Create space between balls in direction
+            _spawnPosition += (ballDiameter + spaceBetweenBalls) * wall.GetSpawnDirectionOfWallBall();       // Update spawn position
         }
+    }
+
+    private GameObject CreateBallContainer()
+    {
+        return new GameObject();
     }
 
     private float GetBallDiameter(float spaceBetweenBalls, int numberOfBalls)                            // Define diameter of ball depend on arena size and number of balls
@@ -31,26 +37,20 @@ public class BallSpawner : MonoBehaviour
 
     private Vector3 GetFirstBallSpawnPoint(WallOfBallLogic wallOfBall, float ballDiameter)          // Return first spawn point with offsets depend on ball diameter
     {
-        var spawnPosition = wallOfBall.GetWallTransform().position;
+        var spawnPosition = wallOfBall.WallOfBallSpawnPoint;
         spawnPosition.y = ballDiameter / 2;
         if (wallOfBall.GetSpawnDirectionOfWallBall().x > 0f) spawnPosition.x += ballDiameter / 2;
         if (wallOfBall.GetSpawnDirectionOfWallBall().z > 0f) spawnPosition.z += ballDiameter / 2;
         return spawnPosition;
     }
     
-    static void createEmptyDuplicate() {
- 
-        GameObject go = new GameObject("GameObject");
+    public static void CreateEmptyChild() {
+        GameObject go = new GameObject("BallContainer");
  
         if(Selection.activeTransform != null)
- 
         {
- 
-            go.transform.parent = Selection.activeTransform.parent;
- 
+            go.transform.parent = Selection.activeTransform;
             go.transform.Translate(Selection.activeTransform.position);
- 
         }
- 
     }
 }

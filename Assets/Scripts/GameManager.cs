@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CameraController _camera;
-    [SerializeField] private BallsManager ballsManager;
+    [SerializeField] public BallsManager ballsManager;
     public static GameManager gameManager { get; private set; }
 
     public static FightPhase FightPhase { get; private set; }

@@ -29,6 +29,12 @@ public class BallsManager : MonoBehaviour
     private BallSpawner _ballSpawner;
     private List<WallOfBallLogic> _pullOfWalls = new();
 
+    public float WallOfBallSpeed
+    {
+        get => wallOfBallsSpeed;
+        set => wallOfBallsSpeed = value;
+    }
+
 
     private void Awake()
     {

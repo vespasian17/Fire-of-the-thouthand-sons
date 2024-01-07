@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db191a13eac52f4680da77610ad5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  moveDirection: {x: 0, y: 0, z: 0}
+  spawnDirection: {x: 0, y: 0, z: 1}
+  moveDirection: {x: 1, y: 0, z: 0}
 --- !u!1 &499126841
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,8 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db191a13eac52f4680da77610ad5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  moveDirection: {x: 0, y: 0, z: 0}
+  spawnDirection: {x: 0, y: 0, z: 1}
+  moveDirection: {x: -1, y: 0, z: 0}
 --- !u!1 &632426648
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,8 +964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db191a13eac52f4680da77610ad5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 1, y: 0, z: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  spawnDirection: {x: 1, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 1}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,8 +1086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 1
-  ballPhaseZoom: 8
-  idlePhaseZoom: 5
+  ballPhaseZoom: 6
+  idlePhaseZoom: 4
 --- !u!1 &1212750610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,9 +1120,9 @@ MonoBehaviour:
   ballPrefab: {fileID: 3382562548798314778, guid: 17a882f7cb44c2640be354f910eead02, type: 3}
   spaceBetweenBalls: 0.2
   numberOfBalls: 20
-  wallOfBallsSpeed: 1
-  minDelayBetweenSpawnWall: 1
-  maxDelayBetweenSpawnWall: 2
+  wallOfBallsSpeed: 4
+  minDelayBetweenSpawnWall: 2
+  maxDelayBetweenSpawnWall: 4
   destroyBallsCount: 10
   wallMinMoveDelay: 10
   wallMaxMoveDelay: 10
@@ -1743,8 +1743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db191a13eac52f4680da77610ad5ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 1, y: 0, z: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  spawnDirection: {x: 1, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: -1}
 --- !u!1 &2013977054
 GameObject:
   m_ObjectHideFlags: 0
