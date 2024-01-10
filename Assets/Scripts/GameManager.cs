@@ -1,12 +1,9 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CameraController _camera;
-    [SerializeField] public BallsManager ballsManager;
     public static GameManager gameManager { get; private set; }
 
     public static FightPhase FightPhase { get; private set; }
@@ -49,7 +46,7 @@ public class GameManager : MonoBehaviour
         {
             case BallPhaseState:
                 _camera.CameraZoomOut();
-                ballsManager.BeginSpawnWallsOfBalls();
+                BallsManager.ballsManager.BeginSpawnWallsOfBalls();
                 break;
             case IdlePhaseState:
                 _camera.CameraZoomIn();

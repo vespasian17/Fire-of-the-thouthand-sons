@@ -1,11 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ball : Projectile
 {
+    private float initializationTime;
+
+    private void Start()
+    {
+        initializationTime = Time.time;
+    }
+
     public Vector3 BallMoveDirection
     {
         get;
@@ -14,7 +18,11 @@ public class Ball : Projectile
     
     private void Update()
     {
-        MoveInDirection(BallMoveDirection, GameManager.gameManager.ballsManager.WallOfBallSpeed);        //Передать направление трансформа!
+        if (!(Time.time - initializationTime < BallsManager.ballsManager.MoveDelay))                // refactor this shit in future
+        {
+            MoveInDirection(BallMoveDirection, BallsManager.ballsManager.WallOfBallSpeed);
+        }
+ 
     }
 
     public void SetBallSize(float ballRadius)
@@ -22,9 +30,9 @@ public class Ball : Projectile
         GetComponent<Transform>().localScale *= ballRadius;
     }
 
-    public void MoveInDirection(Vector3 directionMove, float speed)
+    private void MoveInDirection(Vector3 directionMove, float speed)
     {
-        transform.position += directionMove * speed * Time.deltaTime;
+        transform.position += directionMove * (speed * Time.deltaTime);
     }
     //rotate
 }

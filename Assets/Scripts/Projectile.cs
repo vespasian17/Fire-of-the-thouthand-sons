@@ -70,23 +70,6 @@ public class Projectile : MonoBehaviour, IDamageObject
         
     }
 
-
-    public void SetProjectileDamage(int projectileDamage)
-    {
-        ProjectileMinDamage = projectileDamage;
-    }
-    
-    public void SetProjectileSpeed(int projectileSpeed)
-    {
-        ProjectileSpeed = projectileSpeed;
-    }
-    
-    public void SetProjectilePierceCount(int projectilePierceCount)
-    {
-        PierceCount = projectilePierceCount;
-    }
-
-
     public int GetDamageAmount()
     {
         return Random.Range(_projectileMinDamage, _projectileMaxDamage);
@@ -99,7 +82,7 @@ public class Projectile : MonoBehaviour, IDamageObject
         if (_pierceCount <= 0) Destroy(this.gameObject);
     }
 
-    protected void OnTriggerEnter(Collider damageableObject)
+    protected virtual void OnTriggerEnter(Collider damageableObject)
     {
         if (damageableObject.gameObject.GetComponent<ICollisionObject>() == null) return;
         if (damageableObject.gameObject.GetComponent<IDamageable>() == null)
